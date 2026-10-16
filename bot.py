@@ -1,10 +1,11 @@
 import asyncio
+import os
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
-BOT_TOKEN = 'REMOVED_TOKEN'
-CHANNEL_ID = -1002922110765
+BOT_TOKEN = os.environ['BOT_TOKEN']
+CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 
 bot = Bot(
     token=BOT_TOKEN,
@@ -23,7 +24,7 @@ async def add_signature(message: types.Message):
 
     try:
         await message.delete()
-    except:
+    except Exception:
         pass
 
     caption = SIGNATURE
